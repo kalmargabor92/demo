@@ -4,24 +4,7 @@
 </head>
 <body>
 
-
-<h1>Hello world!</h1>
-
-<p id="appId"></p>
-<p id="userList"></p>
-
-<script>
-    async function fetchAsync(url) {
-        let response = await fetch(url);
-        return await response.json();
-    }
-
-    fetchAsync(window.location.origin + '/user')
-        .then(response => {
-            document.getElementById("appId").innerHTML = response.app;
-            document.getElementById("userList").innerHTML = JSON.stringify(response.userList);
-        });
-</script>
+<h1>Hello world from Static page!</h1>
 
 </body>
 </html>

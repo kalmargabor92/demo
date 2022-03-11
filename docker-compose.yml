@@ -1,0 +1,30 @@
+version: '2'
+#docker network create backend
+networks:
+  default:
+    external:
+      name: backend
+
+services:
+  mongo:
+    image: mongo
+    restart: always
+    container_name: mongo
+    ports:
+      - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+
+  demo:
+    image: demo:latest
+    restart: always
+    ports:
+      - 8080:8080
+    environment:
+      PROFILE: test
+      MONGODB_CONNECTION_STRING: mongo
+    links:
+      - mongo
+
+
